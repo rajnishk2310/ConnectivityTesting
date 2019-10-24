@@ -1,0 +1,18 @@
+#%RAML 1.0
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/9e4cc094-2933-4b94-95d6-47610465a37c/ # 
+title: HelloWorld
+version: v1
+mediaType: 
+  - application/json
+
+/hello:
+  /{name}:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                {"message": "Hello Rajnish"}
+
+  

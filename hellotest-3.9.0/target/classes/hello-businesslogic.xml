@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+    <sub-flow name="hello-businesslogicSub_Flow">
+        <logger message="#[message.inboundProperties.'http.uri.params']" level="INFO" doc:name="Logger"/>
+        <set-variable variableName="name" value="#[message.inboundProperties.'http.uri.params'.name]" doc:name="setName"/>
+        <logger message="#[flowVars.name]" level="INFO" doc:name="Logger"/>
+        <set-payload value="Hello  #[flowVars.name.substring(0,1).toUpperCase()]#[flowVars.name.substring(1)]" doc:name="Set Payload"/>
+        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+    </sub-flow>
+</mule>
